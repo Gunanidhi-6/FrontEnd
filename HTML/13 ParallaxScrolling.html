@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .parallax {
+            position: relative;
+            height: 100vh;
+            background-image: url('html.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .content {
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            text-align: center;
+        }
+        .layer {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+        }
+        .layer1 { top: 20%; }
+        .layer2 { top: 40%; }
+        .layer3 { top: 60%; }
+    </style>
+</head>
+<body>
+    <div class="parallax">
+        <div class="layer layer1" data-speed="0.3">Layer 1</div>
+        <div class="layer layer2" data-speed="0.5">Layer 2</div>
+        <div class="layer layer3" data-speed="0.7">Layer 3</div>
+    </div>
+    <div class="content">
+        <h1>Parallax Scrolling Effect</h1>
+        <p>Scroll down to see the effect in action!</p>
+    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            let scrollPosition = window.scrollY;
+            document.querySelectorAll('.layer').forEach(layer => {
+                let speed = layer.getAttribute('data-speed');
+                layer.style.transform = `translateY(${scrollPosition * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
