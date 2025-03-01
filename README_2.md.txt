@@ -1,0 +1,1 @@
+This repo contains major HTML and CSS basic projects for a WEB Page
